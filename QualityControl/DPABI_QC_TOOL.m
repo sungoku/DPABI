@@ -466,15 +466,16 @@ SubjList=get(handles.SubjListbox, 'String');
 % else
 %     OS='unix';
 % end
-% dlmwrite(fullfile(Path, File), SubjList, 'precision', '%s',...
-%     'delimiter', '', 'newline', OS);
+% WangLei,170503. This way maybe simpler.
+dlmwrite(fullfile(Path, File), char(SubjList), 'precision', '%s',...
+    'delimiter', '', 'newline', OS);
 
 %YAN Chao-Gan, 170223. Use this one for compatibility.
-fid = fopen(fullfile(Path, File),'w');
-for iSub=1:length(SubjList)
-    fprintf(fid,'%s\n',SubjList{iSub});
-end
-fclose(fid);
+% fid = fopen(fullfile(Path, File),'w');
+% for iSub=1:length(SubjList)
+%     fprintf(fid,'%s\n',SubjList{iSub});
+% end
+% fclose(fid);
 
 % --- Executes on button press in ThrdCoverageButton.
 function ThrdCoverageButton_Callback(hObject, eventdata, handles)
